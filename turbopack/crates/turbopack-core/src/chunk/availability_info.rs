@@ -148,7 +148,10 @@ impl AvailabilityInfo {
     /// task per parent availability and module is the overhead this avoids. It reads a single
     /// entry of the keyed [`AsyncLoaderRelevantAvailabilities`] cell.
     ///
-    /// A `module` without an async chunk group in `module_graph` keeps the availability as is.
+    /// A `module` without an async chunk group in `module_graph`, or an
+    /// [`crate::module::ActivatableModule`], keeps the availability as is. When the chunking of
+    /// `module` reaches an activatable module, the result only removes chunk groups from `self`
+    /// and keeps the entry group.
     pub async fn for_async_loader(
         self,
         module_graph: ResolvedVc<ModuleGraph>,
