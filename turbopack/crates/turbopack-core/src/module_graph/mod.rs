@@ -2445,6 +2445,7 @@ pub mod tests {
             )),
             false,
             false,
+            GraphCollectingMode::CompleteGraph,
         )
         .connect()
         .to_resolved()
@@ -3664,6 +3665,7 @@ pub mod tests {
                     .resolved_cell(),
                     false,
                     false,
+                    GraphCollectingMode::CompleteGraph,
                 );
                 let module_graph = ModuleGraph::from_graphs(
                     vec![
@@ -3677,6 +3679,7 @@ pub mod tests {
                             VisitedModules::from_graph(parent_graph),
                             false,
                             false,
+                            GraphCollectingMode::CompleteGraph,
                         ),
                     ],
                     None,
@@ -3829,6 +3832,7 @@ pub mod tests {
             GraphEntries::resolved_cell(GraphEntries::new(entries, vec![])),
             false,
             false,
+            GraphCollectingMode::CompleteGraph,
         );
         let module_to_name = graph
             .connect()
